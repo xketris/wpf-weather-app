@@ -10,30 +10,51 @@ namespace WeatherApp
 {
     public partial class MainWindow : Window
     {
+        private WeatherService _ws;
+
         public MainWindow()
         {
             InitializeComponent();
-
+            _ws = new WeatherService();
             FilterViewModel vm = new FilterViewModel();
             this.DataContext = vm;
         }
         private void Cmb_KeyUp(object sender, KeyEventArgs e)
         {
-            CollectionView itemsViewOriginal = (CollectionView)CollectionViewSource.GetDefaultView(Cmb.ItemsSource);
+            CollectionView itemsViewOriginal = (CollectionView)CollectionViewSource.GetDefaultView(City.ItemsSource);
 
             itemsViewOriginal.Filter = ((o) =>
             {
-                if (String.IsNullOrEmpty(Cmb.Text)) return true;
+                if (String.IsNullOrEmpty(City.Text)) return true;
                 else
                 {
-                    if (((string)o).Contains(Cmb.Text)) return true;
+                    if (((string)o).Contains(City.Text)) return true;
                     else return false;
                 }
             });
 
             itemsViewOriginal.Refresh();
         }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WeatherData? weatherData = await _ws.GetWeatherAsync(City.Text);
+
+            if (weatherData != null)
+            {
+                string weatherInfo = $"Temperatura: {weatherData?.Main?.Temperature}°C\n";
+                weatherInfo += $"Wilgotność: {weatherData?.Main?.Humidity}%\n";
+                weatherInfo += $"Opis: {weatherData?.Weather?[0].Description}";
+
+                Display.Text = weatherInfo;
+            }
+            else
+            {
+                Display.Text = "Błąd pobierania danych pogodowych.";
+            }
+        }
     }
+
     public class FilterViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<string> dataSource;

@@ -12,10 +12,12 @@
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
 
-        <DockPanel>
-            <ComboBox x:Name="Cmb" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding DataSource}" Width="180" Height="40" FontSize="20" IsDropDownOpen="True" StaysOpenOnEdit="True" KeyUp="Cmb_KeyUp" />
-            <Button>Check</Button>
-        </DockPanel>
-        <Grid Grid.Row="1"></Grid>
+        <UniformGrid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ComboBox x:Name="City" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding DataSource}" Width="320" Height="40" FontSize="20" IsDropDownOpen="True" StaysOpenOnEdit="True" KeyUp="Cmb_KeyUp" />
+            <Button Click="Button_Click" Width="120">Check the weather</Button>
+        </UniformGrid>
+        <StackPanel Grid.Row="1">
+            <TextBlock Name="Display" />
+        </StackPanel>
     </Grid>
 </Window>
