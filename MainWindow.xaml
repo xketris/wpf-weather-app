@@ -12,10 +12,10 @@
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
 
-        <StackPanel>
-            
-        </StackPanel>
-
+        <DockPanel>
+            <ComboBox x:Name="Cmb" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding DataSource}" Width="180" Height="40" FontSize="20" IsDropDownOpen="True" StaysOpenOnEdit="True" KeyUp="Cmb_KeyUp" />
+            <Button>Check</Button>
+        </DockPanel>
         <Grid Grid.Row="1"></Grid>
     </Grid>
 </Window>
