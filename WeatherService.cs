@@ -29,6 +29,7 @@ public class WeatherService
         try
         {
             // Wysyłamy asynchroniczne żądanie GET do API
+            //HttpResponseMessage response = await _client.GetAsync($"{BaseUrl}?q={city}&lang=pl&appid={ApiKey}&units=metric");
             HttpResponseMessage response = await _client.GetAsync($"{BaseUrl}?q={city}&appid={ApiKey}&units=metric");
 
             // Sprawdzenie, czy odpowiedź jest poprawna (status 200 OK)
