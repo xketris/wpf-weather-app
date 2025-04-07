@@ -9,12 +9,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\broken-clouds.png" />
+    <None Remove="Assets\clouds.png" />
+    <None Remove="Assets\few-clouds.png" />
+    <None Remove="Assets\high-temp.png" />
+    <None Remove="Assets\humidity.png" />
+    <None Remove="Assets\low-temp.png" />
+    <None Remove="Assets\mid-temp.png" />
+    <None Remove="Assets\mist.png" />
+    <None Remove="Assets\rain.png" />
+    <None Remove="Assets\shower-rain.png" />
+    <None Remove="Assets\snow.png" />
+    <None Remove="Assets\sun.png" />
+    <None Remove="Assets\thunderstorm.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Assets\broken-clouds.png" />
+    <Resource Include="Assets\clouds.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\few-clouds.png" />
+    <Resource Include="Assets\high-temp.png" />
+    <Resource Include="Assets\humidity.png" />
+    <Resource Include="Assets\low-temp.png" />
+    <Resource Include="Assets\mid-temp.png" />
+    <Resource Include="Assets\mist.png" />
+    <Resource Include="Assets\rain.png" />
+    <Resource Include="Assets\shower-rain.png" />
+    <Resource Include="Assets\snow.png" />
+    <Resource Include="Assets\sun.png" />
+    <Resource Include="Assets\thunderstorm.png" />
   </ItemGroup>
 
 </Project>

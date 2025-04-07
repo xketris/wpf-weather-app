@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using WeatherApp.Models;
 
 namespace WeatherApp
 {
@@ -12,12 +10,14 @@ namespace WeatherApp
     {
         private WeatherService _ws;
 
+        private FilterView FilterViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
             _ws = new WeatherService();
-            FilterViewModel vm = new FilterViewModel();
-            this.DataContext = vm;
+            FilterViewModel = new FilterView();
+            this.DataContext = FilterViewModel;
         }
         private void Cmb_KeyUp(object sender, KeyEventArgs e)
         {
@@ -36,61 +36,31 @@ namespace WeatherApp
             itemsViewOriginal.Refresh();
         }
 
+        private string Capitalize(string str)
+        {
+            if (str.Length == 0)
+            {
+                return "";
+            }
+            return str.Length == 1 ? Convert.ToString(char.ToUpper(str[0])) : (char.ToUpper(str[0]) + str.Substring(1));
+        }
+
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             WeatherData? weatherData = await _ws.GetWeatherAsync(City.Text);
 
             if (weatherData != null)
             {
-                string weatherInfo = $"Temperatura: {weatherData?.Main?.Temperature}°C\n";
-                weatherInfo += $"Wilgotność: {weatherData?.Main?.Humidity}%\n";
-                weatherInfo += $"Opis: {weatherData?.Weather?[0].Description}";
 
-                Display.Text = weatherInfo;
+                FilterViewModel.Temperature = $"{weatherData?.Main?.Temperature}°C";
+                Humidity.Text = $"{weatherData?.Main?.Humidity}%";
+                FilterViewModel.Description = $"{Capitalize(weatherData?.Weather?[0].Description)}";
+                FilterViewModel.IsValid = true;
             }
             else
             {
-                Display.Text = "Błąd pobierania danych pogodowych.";
+                FilterViewModel.IsValid = false;
             }
         }
-    }
-
-    public class FilterViewModel : INotifyPropertyChanged
-    {
-        private ObservableCollection<string> dataSource;
-        public ObservableCollection<string> DataSource
-        {
-            get
-            {
-                return dataSource;
-            }
-            set { dataSource = value; OnPropertyChanged("ListOfCountry"); }
-        }
-        public FilterViewModel()
-        {
-            dataSource = new ObservableCollection<string>();
-            dataSource.Add("Tokio");
-            dataSource.Add("Vienna");
-            dataSource.Add("Prague");
-            dataSource.Add("Berlin");
-            dataSource.Add("London");
-            dataSource.Add("Warsaw");
-            dataSource.Add("Paris");
-            dataSource.Add("Rome");
-            dataSource.Add("Oslo");
-            dataSource.Add("Madrid");
-            dataSource.Add("Lisbon");
-            dataSource.Add("Helsinki");
-            dataSource.Add("Athens");
-            dataSource.Add("Amsterdam");
-            dataSource.Add("Bangkok");
-            dataSource.Add("Ottawa");
-            dataSource.Add("Budapest");
-            dataSource.Add("Seoul");
-            dataSource.Add("Moscow");
-            dataSource.Add("Kyvi");
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        internal void OnPropertyChanged([CallerMemberName] string propName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 }

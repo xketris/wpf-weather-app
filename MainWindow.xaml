@@ -4,8 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp"
+        xmlns:converters="clr-namespace:WeatherApp.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1100">
+        Title="WeatherApp" Height="650" Width="1100">
+    <Window.Resources>
+        <converters:WeatherConverter x:Key="WeatherConverter" />
+        <converters:TemperatureConverter x:Key="TemperatureConverter" />
+        <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -18,10 +25,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <ComboBox x:Name="City" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding DataSource}" Width="320" Height="40" FontSize="20" IsDropDownOpen="True" StaysOpenOnEdit="True" KeyUp="Cmb_KeyUp" />
+            <ComboBox x:Name="City" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding DataSource}" Width="320" Height="40" FontSize="20" IsDropDownOpen="False" StaysOpenOnEdit="True" KeyUp="Cmb_KeyUp" />
             <Button Grid.Column="1" Click="Button_Click" Width="120">Check the weather</Button>
         </Grid>
-        <Border Padding="50" Grid.Row="1">
+        <Border Padding="50" Grid.Row="1" Visibility="{Binding Path=IsValid, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.Resources >
                     <Style TargetType="Border" >
@@ -41,37 +48,40 @@
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Grid.RowSpan="2">
-                    <TextBlock VerticalAlignment="Center" FontSize="26" Foreground="Gray">Temperatura:</TextBlock>
+                <Border Grid.Row="0" Grid.RowSpan="2" Padding="15,15,15,15">
+                    <Image Source="{Binding Path=Temperature, Converter={StaticResource TemperatureConverter}}" VerticalAlignment="Center"></Image>
                 </Border>
-                <Border  Grid.Row="2" Grid.RowSpan="2">
-                    <TextBlock VerticalAlignment="Center" FontSize="26" Foreground="Gray">Temperatura:</TextBlock>
+                <Border  Grid.Row="2" Grid.RowSpan="2" Padding="15,15,15,15">
+                    <Image Source="/Assets/humidity.png" VerticalAlignment="Center" Width="70"></Image>
                 </Border>
-                <Border Grid.Row="4" Grid.RowSpan="2">
-                    <TextBlock VerticalAlignment="Center" FontSize="26" Foreground="Gray">Temperatura:</TextBlock>
+                <Border Grid.Row="4" Grid.RowSpan="2" Padding="15,15,15,15">
+                    <Image Source="{Binding Path=Description, Converter={StaticResource WeatherConverter}}" VerticalAlignment="Center"></Image>
                 </Border>
 
                 <Border Grid.Column="1" Grid.Row="0">
-                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Temperatura:</TextBlock>
+                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Temperature:</TextBlock>
                 </Border>
                 <Border Grid.Column="1" Grid.Row="1">
-                    <TextBlock VerticalAlignment="Center" FontSize="42">22*C</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="52" Text="{Binding Temperature}"></TextBlock>
                 </Border>
                 
                 <Border Grid.Column="1" Grid.Row="2">
-                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Wilgotność:</TextBlock>
+                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Humidity:</TextBlock>
                 </Border>                
                 <Border Grid.Column="1" Grid.Row="3">
-                    <TextBlock VerticalAlignment="Center" FontSize="42">57%</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="52" Name="Humidity"></TextBlock>
                 </Border>
 
                 <Border Grid.Column="1" Grid.Row="4">
-                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Opis:</TextBlock>
+                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Description:</TextBlock>
                 </Border>
                 <Border Grid.Column="1" Grid.Row="5">
-                    <TextBlock VerticalAlignment="Center" FontSize="42">Lekko pochmurnie</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="52" Text="{Binding Description}"></TextBlock>
                 </Border>
             </Grid>
+        </Border>
+        <Border Padding="50" Grid.Row="1" Visibility="{Binding Path=IsValid, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+            <TextBlock Text="Błąd pobierania danych" VerticalAlignment="Top" FontSize="52" />
         </Border>
     </Grid>
 </Window>
