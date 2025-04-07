@@ -71,6 +71,9 @@ public class MainData
 
     [JsonProperty("humidity")]
     public float Humidity { get; set; }
+
+    [JsonProperty("pressure")]
+    public float Pressure { get; set; }
 }
 
 public class WeatherInfo

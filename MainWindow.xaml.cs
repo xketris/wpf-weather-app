@@ -54,6 +54,7 @@ namespace WeatherApp
 
                 FilterViewModel.Temperature = $"{weatherData?.Main?.Temperature}°C";
                 Humidity.Text = $"{weatherData?.Main?.Humidity}%";
+                Pressure.Text = $"{weatherData?.Main?.Pressure}hPa";
                 FilterViewModel.Description = $"{Capitalize(weatherData?.Weather?[0].Description)}";
                 FilterViewModel.IsValid = true;
             }

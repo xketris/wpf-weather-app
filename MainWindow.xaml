@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
 
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -47,15 +47,20 @@
                     <RowDefinition Height="5*" />
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="5*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
 
                 <Border Grid.Row="0" Grid.RowSpan="2" Padding="15,15,15,15">
                     <Image Source="{Binding Path=Temperature, Converter={StaticResource TemperatureConverter}}" VerticalAlignment="Center"></Image>
                 </Border>
                 <Border  Grid.Row="2" Grid.RowSpan="2" Padding="15,15,15,15">
-                    <Image Source="/Assets/humidity.png" VerticalAlignment="Center" Width="70"></Image>
+                    <Image Source="/Assets/humidity.png" VerticalAlignment="Center" Width="60"></Image>
                 </Border>
-                <Border Grid.Row="4" Grid.RowSpan="2" Padding="15,15,15,15">
+                <Border  Grid.Row="4" Grid.RowSpan="2" Padding="15,15,15,15">
+                    <Image Source="/Assets/pressure.png" VerticalAlignment="Center" Width="60"></Image>
+                </Border>
+                <Border Grid.Row="6" Grid.RowSpan="2" Padding="15,15,15,15">
                     <Image Source="{Binding Path=Description, Converter={StaticResource WeatherConverter}}" VerticalAlignment="Center"></Image>
                 </Border>
 
@@ -72,11 +77,18 @@
                 <Border Grid.Column="1" Grid.Row="3">
                     <TextBlock VerticalAlignment="Center" FontSize="52" Name="Humidity"></TextBlock>
                 </Border>
-
+                
                 <Border Grid.Column="1" Grid.Row="4">
+                    <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Pressure:</TextBlock>
+                </Border>                
+                <Border Grid.Column="1" Grid.Row="5">
+                    <TextBlock VerticalAlignment="Center" FontSize="52" Name="Pressure"></TextBlock>
+                </Border>
+
+                <Border Grid.Column="1" Grid.Row="6">
                     <TextBlock VerticalAlignment="Bottom" FontSize="26" Foreground="Gray">Description:</TextBlock>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="5">
+                <Border Grid.Column="1" Grid.Row="7">
                     <TextBlock VerticalAlignment="Center" FontSize="52" Text="{Binding Description}"></TextBlock>
                 </Border>
             </Grid>

@@ -18,6 +18,7 @@
     <None Remove="Assets\low-temp.png" />
     <None Remove="Assets\mid-temp.png" />
     <None Remove="Assets\mist.png" />
+    <None Remove="Assets\pressure.png" />
     <None Remove="Assets\rain.png" />
     <None Remove="Assets\shower-rain.png" />
     <None Remove="Assets\snow.png" />
@@ -45,6 +46,7 @@
     <Resource Include="Assets\low-temp.png" />
     <Resource Include="Assets\mid-temp.png" />
     <Resource Include="Assets\mist.png" />
+    <Resource Include="Assets\pressure.png" />
     <Resource Include="Assets\rain.png" />
     <Resource Include="Assets\shower-rain.png" />
     <Resource Include="Assets\snow.png" />
