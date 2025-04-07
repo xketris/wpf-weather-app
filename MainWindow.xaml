@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp"
+        xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
         xmlns:converters="clr-namespace:WeatherApp.Converters"
         mc:Ignorable="d"
         Title="WeatherApp" Height="650" Width="1100">
@@ -81,7 +82,18 @@
             </Grid>
         </Border>
         <Border Padding="50" Grid.Row="1" Visibility="{Binding Path=IsValid, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-            <TextBlock Text="Błąd pobierania danych" VerticalAlignment="Top" FontSize="52" />
+            <Grid Height="200" Width="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Border Background="#d98a90" BorderThickness="3" BorderBrush="#d98a90">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32">Error</TextBlock>
+                </Border>
+                <Border Background="#f2d7d9" BorderThickness="3" BorderBrush="#d98a90" Grid.Row="1" Padding="0,15,0,0">
+                    <TextBlock HorizontalAlignment="Center" FontSize="42" TextWrapping="Wrap" TextAlignment="Center">An error occured on fetching data</TextBlock>
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </Window>
