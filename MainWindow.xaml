@@ -4,12 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp"
-        xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
         xmlns:converters="clr-namespace:WeatherApp.Converters"
         mc:Ignorable="d"
         Title="WeatherApp" Height="650" Width="1100">
     <Window.Resources>
-        <converters:WeatherConverter x:Key="WeatherConverter" />
         <converters:TemperatureConverter x:Key="TemperatureConverter" />
         <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
