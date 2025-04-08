@@ -56,6 +56,7 @@ namespace WeatherApp
                 Humidity.Text = $"{weatherData?.Main?.Humidity}%";
                 Pressure.Text = $"{weatherData?.Main?.Pressure}hPa";
                 FilterViewModel.Description = $"{Capitalize(weatherData?.Weather?[0].Description)}";
+                FilterViewModel.Icon = $"/Assets/WeatherType/{Capitalize(weatherData?.Weather?[0].Icon)}.png";
                 FilterViewModel.IsValid = true;
             }
             else

@@ -10,20 +10,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\broken-clouds.png" />
-    <None Remove="Assets\clouds.png" />
-    <None Remove="Assets\few-clouds.png" />
     <None Remove="Assets\high-temp.png" />
     <None Remove="Assets\humidity.png" />
     <None Remove="Assets\low-temp.png" />
     <None Remove="Assets\mid-temp.png" />
-    <None Remove="Assets\mist.png" />
     <None Remove="Assets\pressure.png" />
-    <None Remove="Assets\rain.png" />
-    <None Remove="Assets\shower-rain.png" />
-    <None Remove="Assets\snow.png" />
-    <None Remove="Assets\sun.png" />
-    <None Remove="Assets\thunderstorm.png" />
+    <None Remove="Assets\WeatherType\01d.png" />
+    <None Remove="Assets\WeatherType\01n.png" />
+    <None Remove="Assets\WeatherType\02d.png" />
+    <None Remove="Assets\WeatherType\02n.png" />
+    <None Remove="Assets\WeatherType\03d.png" />
+    <None Remove="Assets\WeatherType\03n.png" />
+    <None Remove="Assets\WeatherType\04d.png" />
+    <None Remove="Assets\WeatherType\04n.png" />
+    <None Remove="Assets\WeatherType\09d.png" />
+    <None Remove="Assets\WeatherType\09n.png" />
+    <None Remove="Assets\WeatherType\10d.png" />
+    <None Remove="Assets\WeatherType\10n.png" />
+    <None Remove="Assets\WeatherType\11d.png" />
+    <None Remove="Assets\WeatherType\11n.png" />
+    <None Remove="Assets\WeatherType\13d.png" />
+    <None Remove="Assets\WeatherType\13n.png" />
+    <None Remove="Assets\WeatherType\50d.png" />
+    <None Remove="Assets\WeatherType\50n.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,22 +45,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\broken-clouds.png" />
-    <Resource Include="Assets\clouds.png">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\few-clouds.png" />
     <Resource Include="Assets\high-temp.png" />
     <Resource Include="Assets\humidity.png" />
     <Resource Include="Assets\low-temp.png" />
     <Resource Include="Assets\mid-temp.png" />
-    <Resource Include="Assets\mist.png" />
     <Resource Include="Assets\pressure.png" />
-    <Resource Include="Assets\rain.png" />
-    <Resource Include="Assets\shower-rain.png" />
-    <Resource Include="Assets\snow.png" />
-    <Resource Include="Assets\sun.png" />
-    <Resource Include="Assets\thunderstorm.png" />
+    <Resource Include="Assets\WeatherType\01d.png" />
+    <Resource Include="Assets\WeatherType\01n.png" />
+    <Resource Include="Assets\WeatherType\02d.png" />
+    <Resource Include="Assets\WeatherType\02n.png" />
+    <Resource Include="Assets\WeatherType\03d.png" />
+    <Resource Include="Assets\WeatherType\03n.png" />
+    <Resource Include="Assets\WeatherType\04d.png" />
+    <Resource Include="Assets\WeatherType\04n.png" />
+    <Resource Include="Assets\WeatherType\09d.png" />
+    <Resource Include="Assets\WeatherType\09n.png" />
+    <Resource Include="Assets\WeatherType\10d.png" />
+    <Resource Include="Assets\WeatherType\10n.png" />
+    <Resource Include="Assets\WeatherType\11d.png" />
+    <Resource Include="Assets\WeatherType\11n.png" />
+    <Resource Include="Assets\WeatherType\13d.png" />
+    <Resource Include="Assets\WeatherType\13n.png" />
+    <Resource Include="Assets\WeatherType\50d.png" />
+    <Resource Include="Assets\WeatherType\50n.png" />
   </ItemGroup>
 
 </Project>

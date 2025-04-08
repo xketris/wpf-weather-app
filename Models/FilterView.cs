@@ -47,6 +47,18 @@ namespace WeatherApp.Models
             }
         }
 
+        private string _icon;
+
+        public string Icon
+        {
+            get { return _icon; }
+            set
+            {
+                _icon = value;
+                OnPropertyChanged("Icon");
+            }
+        }
+
         private ObservableCollection<string> dataSource;
         public ObservableCollection<string> DataSource
         {
@@ -59,6 +71,7 @@ namespace WeatherApp.Models
         public FilterView()
         {
             IsValid = true;
+            Icon = "/Assets/WeatherType/01d.png";
             dataSource = new ObservableCollection<string>();
             dataSource.Add("Tokio");
             dataSource.Add("Wiedeń");

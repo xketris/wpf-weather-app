@@ -29,7 +29,7 @@
             <ComboBox x:Name="City" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding DataSource}" Width="320" Height="40" FontSize="20" IsDropDownOpen="False" StaysOpenOnEdit="True" KeyUp="Cmb_KeyUp" />
             <Button Grid.Column="1" Click="Button_Click" Width="120">Check the weather</Button>
         </Grid>
-        <Border Padding="50" Grid.Row="1" Visibility="{Binding Path=IsValid, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <Border Padding="50,20,50,50" Grid.Row="1" Visibility="{Binding Path=IsValid, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.Resources >
                     <Style TargetType="Border" >
@@ -55,13 +55,13 @@
                     <Image Source="{Binding Path=Temperature, Converter={StaticResource TemperatureConverter}}" VerticalAlignment="Center"></Image>
                 </Border>
                 <Border  Grid.Row="2" Grid.RowSpan="2" Padding="15,15,15,15">
-                    <Image Source="/Assets/humidity.png" VerticalAlignment="Center" Width="60"></Image>
+                    <Image Source="/Assets/humidity.png" VerticalAlignment="Center"></Image>
                 </Border>
                 <Border  Grid.Row="4" Grid.RowSpan="2" Padding="15,15,15,15">
-                    <Image Source="/Assets/pressure.png" VerticalAlignment="Center" Width="60"></Image>
+                    <Image Source="/Assets/pressure.png" VerticalAlignment="Center"></Image>
                 </Border>
                 <Border Grid.Row="6" Grid.RowSpan="2" Padding="15,15,15,15">
-                    <Image Source="{Binding Path=Description, Converter={StaticResource WeatherConverter}}" VerticalAlignment="Center"></Image>
+                    <Image Source="{Binding Path=Icon}" VerticalAlignment="Center"></Image>
                 </Border>
 
                 <Border Grid.Column="1" Grid.Row="0">
